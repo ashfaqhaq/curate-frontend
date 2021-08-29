@@ -1,30 +1,26 @@
-import './App.css';
-import { useAuth0 } from '@auth0/auth0-react';
+import "./App.css";
+import React from "react";
+import { Stack, Box } from "@chakra-ui/react";
 
+import NavBar from "./components/NavBar";
+import Body from "./components/Body";
+import CardGroup from "./components/CardGroup";
+import CreateRoadmap from "./components/CreateRoadmap";
 
 function App() {
-
-
-  const {
-    isAuthenticated,
-    loginWithRedirect,
-    logout,
-    user,
-  } = useAuth0();
   return (
-    <div className="App">
-     
+    // <div className="relative h-1by2 slategray-darker pattern-grid-lg">
+    <Box w="100%" h="100%" bg="white">
+      <Stack p={4}>
+        {/* <NavBar />
+      <Body />
+      <CardGroup /> */}
 
-      {isAuthenticated && (
-    <button onClick={() => {
-      logout({ returnTo: window.location.origin });
-    }}>Log out</button>)}
-      {!isAuthenticated && (
-        <button onClick={loginWithRedirect}>Log in</button>
-      )}
+        <CreateRoadmap />
+      </Stack>
+    </Box>
 
-      <div>Hello {user?JSON.stringify(user):null}</div>
-    </div>
+    // </div>
   );
 }
 

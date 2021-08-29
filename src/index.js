@@ -3,18 +3,34 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import {
+  ChakraProvider,
+  VStack,
+  Flex,
+  ColorModeScript,
+} from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 import {Auth0Provider} from '@auth0/auth0-react'
+
+const config = {
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
+};
+
+const theme = extendTheme({ config });
 
 ReactDOM.render(
   <Auth0Provider
         domain='dev-5torqz8e.us.auth0.com'
         clientId='128wykGVXmyeRPfFARUE7OUgLaqpTcwf'
         redirectUri={window.location.origin}
-        audience="https://dev-5torqz8e.us.auth0.com/api/v2/"
-        scope='read:current_user update:current_user_metadata'
+        audience="this is an identifier"
+        scope='openid profile email'
     >
+         <ChakraProvider>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <App />
+    </ChakraProvider>
     </Auth0Provider>,
   document.getElementById('root')
 );
