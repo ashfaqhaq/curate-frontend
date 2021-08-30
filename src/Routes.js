@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
 import Landing from "./pages/Landing";
+import Create from "./pages/Create";
 
 
 function Routes() {
@@ -32,8 +33,8 @@ function Routes() {
             {/* <Roadmap /> */}
           </Route>
           <Route exact path="/create">
-            <Dashboard />
-            {/* <CreateRoadmap */}
+           
+            <Create />
           </Route>
         </Switch>
       </Router>

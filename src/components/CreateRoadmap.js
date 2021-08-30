@@ -1,24 +1,17 @@
 import React, { useState } from "react";
 import {
-  Heading,
   Button,
   Input,
   Stack,
   Text,
-  Textarea,
-  ButtonGroup,
-  IconButton,
-  Box,
   Radio,
   RadioGroup,
   NumberInput,
   NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  Collapse,
-  useDisclosure,
   HStack,
+  Container,
+  Flex,
+  InputGroup,
 } from "@chakra-ui/react";
 
 import {
@@ -26,7 +19,6 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { AddIcon } from "@chakra-ui/icons";
 
 const initialValue = {
   name: "1",
@@ -35,105 +27,110 @@ const initialValue = {
   link: "",
   isFree: true,
 };
+
 function CreateRoadmap() {
   const [step, setStep] = useState([initialValue]);
   const [show, setShow] = useState(false);
-  const [data, setData] = useState();
   const [value, setValue] = React.useState("");
+
   const handleChange = (event) => setValue(event.target.value);
-  const { isOpen, onToggle } = useDisclosure();
+
+  const VerticalCard = ({ step }) => {
+    return step.map((item) => (
+      <>
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          contentStyle={{ background: "#1A202C", color: "#F56565" }}
+          contentArrowStyle={{
+            borderRight: "7px solid  #1A202C",
+          }}
+          iconStyle={{ background: "rgb(256, 10, 10)", color: "#fff" }}
+        >
+          <HStack spacing={2} centered={true}>
+            <Text> Name: </Text>
+            <Input
+              value={value}
+              onChange={handleChange}
+              placeholder="eg: HTML Roadmap"
+              size="md"
+            />
+            <Text> Link: </Text>
+            <Input
+              value={value}
+              onChange={handleChange}
+              placeholder="https://youtube.com/c/TanayPratap"
+              size="md"
+            />
+          </HStack>
+
+          <Text>Description: (optional)</Text>
+          <Input
+            value={value}
+            onChange={handleChange}
+            placeholder="Description"
+            size="md"
+          />
+
+          <Flex>
+          
+          <InputGroup>
+            <NumberInput>
+              Hours needed <NumberInputField m={2} />
+            </NumberInput>
+            <RadioGroup m={2}>
+              <Stack spacing={4} direction="row">
+                <Radio value="1">Free</Radio>
+                <Radio value="2">Paid</Radio>
+              </Stack>
+            </RadioGroup>
+            </InputGroup>
+          </Flex>
+          
+        </VerticalTimelineElement>
+      </>
+    ));
+  };
 
   const add = () => {
     setStep((prevState) => [...prevState, initialValue]);
   };
 
   return (
-    <>
-      <Stack spacing={1}>
-        <Box w={"xl"}>
-          <Text>name: {value}</Text>
+    <div>
+      <Container maxW="container.xl" color="white">
+        <Stack direction={["column", "row"]} spacing={4} p="4">
+          <Text> Name: </Text>
           <Input
             value={value}
             onChange={handleChange}
             placeholder="eg: HTML Roadmap"
             size="md"
           />
-          <Text>Description: {value}</Text>
-          <Textarea
+
+          <Text>Description: </Text>
+          <Input
             value={value}
             onChange={handleChange}
             placeholder="Description"
             size="md"
           />
-        </Box>
+        </Stack>
 
         <VerticalTimeline layout="1-column-left">
-          {step.map((item) => (
-            <>
-            <Button onClick={()=>setShow(!show)}> Collapse </Button>
-              <Collapse in={show} animateOpacity startingHeight={30} >
-                <VerticalTimelineElement
-                  className="vertical-timeline-element--work"
-                  contentStyle={{ background: "#fff", color: "#000" }}
-                  contentArrowStyle={{
-                    borderRight: "7px solid  rgb(33, 150, 243)",
-                  }}
-                  date="2011 - present"
-                  iconStyle={{ background: "rgb(256, 10, 10)", color: "#fff" }}
-                >
-                  <HStack spacing={2} centered={true}>
-                  <Text> Name: </Text>
-                  <Input
-                    value={value}
-                    onChange={handleChange}
-                    placeholder="eg: HTML Roadmap"
-                    size="md"
-                  />
-                  <Text> Link: </Text>
-                  <Input
-                    value={value}
-                    onChange={handleChange}
-                    placeholder="https://youtube.com/c/TanayPratap"
-                    size="md"
-                  />
-                  </HStack>
-                 
-                  <Text>Description: (optional)</Text>
-                  <Input
-                    value={value}
-                    onChange={handleChange}
-                    placeholder="Description"
-                    size="md"
-                  />
-
-                  <RadioGroup m={1}>
-                    <Stack spacing={4} direction="row">
-                      <Radio value="1">Free</Radio>
-                      <Radio value="2">Paid</Radio>
-                    </Stack>
-                  </RadioGroup>
-
-                  <NumberInput>
-                    <NumberInputField />
-                    <NumberInputStepper>
-                      <NumberIncrementStepper />
-                      <NumberDecrementStepper />
-                    </NumberInputStepper>
-                  </NumberInput>
-                </VerticalTimelineElement>
-              </Collapse>
-            </>
-          ))}
+          <VerticalCard step={step} />
         </VerticalTimeline>
-        <ButtonGroup size="sm" isAttached variant="outline">
-          <Button mr="-px">Save</Button>
-          <IconButton aria-label="Add to friends" icon={<AddIcon />} />
-        </ButtonGroup>
-        <Button align="right" onClick={() => add()}>
-          Add
-        </Button>
-      </Stack>
-    </>
+        <Stack
+          direction={["column-reverse", "row-reverse"]}
+          spacing={4}
+          m="4"
+          p="4"
+        >
+          <Button onClick={() => add()} size="sm" isAttached variant="outline">
+            Add
+          </Button>
+        </Stack>
+      </Container>
+    </div>
   );
 }
 
