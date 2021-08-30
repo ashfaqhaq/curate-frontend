@@ -18,6 +18,7 @@ import {
   NumberDecrementStepper,
   Collapse,
   useDisclosure,
+  HStack,
 } from "@chakra-ui/react";
 
 import {
@@ -80,29 +81,32 @@ function CreateRoadmap() {
                   date="2011 - present"
                   iconStyle={{ background: "rgb(256, 10, 10)", color: "#fff" }}
                 >
-                  <Text>name: {value}</Text>
+                  <HStack spacing={2} centered={true}>
+                  <Text> Name: </Text>
                   <Input
                     value={value}
                     onChange={handleChange}
                     placeholder="eg: HTML Roadmap"
                     size="md"
                   />
-                  <Text> Link: {value}</Text>
+                  <Text> Link: </Text>
                   <Input
                     value={value}
                     onChange={handleChange}
                     placeholder="https://youtube.com/c/TanayPratap"
                     size="md"
                   />
-                  <Text>Description: {value}</Text>
-                  <Textarea
+                  </HStack>
+                 
+                  <Text>Description: (optional)</Text>
+                  <Input
                     value={value}
                     onChange={handleChange}
                     placeholder="Description"
                     size="md"
                   />
 
-                  <RadioGroup m={1} p={4}>
+                  <RadioGroup m={1}>
                     <Stack spacing={4} direction="row">
                       <Radio value="1">Free</Radio>
                       <Radio value="2">Paid</Radio>
@@ -125,7 +129,7 @@ function CreateRoadmap() {
           <Button mr="-px">Save</Button>
           <IconButton aria-label="Add to friends" icon={<AddIcon />} />
         </ButtonGroup>
-        <Button selfAlign="right" onClick={() => add()}>
+        <Button align="right" onClick={() => add()}>
           Add
         </Button>
       </Stack>

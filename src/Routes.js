@@ -6,8 +6,6 @@ import Dashboard from "./pages/Dashboard";
 import Landing from "./pages/Landing";
 
 
-import App from "./App";
-
 function Routes() {
   const user = null;
   console.log(user);
@@ -18,13 +16,7 @@ function Routes() {
           {/* <Route exact path="/">
             {user ? <Dashboard /> : <Landing />}
           </Route> */}
-          {/* <Route exact path="/" component={App} > */}
-          {/* <Route exact path="/dashboard" component={Dashboard} /> */}
-      
-          {/* <Route exact path="/signout" component= {Signout}/> */}
-
-          {/* <Redirect path="/home" component={Landing}/> */}
-          {/* <Route exact path="/Gsignin" component= {GoogleSignIn} /> */}
+         
 
           <Route exact path="/" component={Landing} />
         

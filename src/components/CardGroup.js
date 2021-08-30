@@ -2,47 +2,83 @@ import React from "react";
 
 import {
   Box,
-  Center,
+  Wrap,
   Heading,
   Text,
+  Link,
+  Button,
   Stack,
-  Avatar,
-  useColorModeValue,
-  Image,
-  Wrap,
-  Img,
+  SimpleGrid,
+  Container,
+  Icon,
 } from "@chakra-ui/react";
-
 function Cards() {
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-        <Img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Road_in_Norway.jpg/220px-Road_in_Norway.jpg" />
-      <Box m="5" as="a" href="/blog-post-thing">
-        <Heading m="5" mb="0" as="h4" size="md">
-          Blog Post
-        </Heading>
-        <Text m="5" mt="0">
-          My cool blog post
+    <Box
+      py={4}
+      display={{ md: "flex" }}
+      maxWidth="{4}"
+      bg="white"
+      borderWidth={1}
+      margin={2}
+      
+      rounded="lg"
+      
+    >
+      <Stack
+        align={{ base: "center", md: "stretch" }}
+        textAlign={{ base: "center", md: "left" }}
+        mt={0}
+        ml={{ md: 6 }}
+      >
+        <Text
+          fontWeight="bold"
+          textTransform="uppercase"
+          fontSize="lg"
+          letterSpacing="wide"
+          color="teal.600"
+        >
+         Frontend Roadmap 
         </Text>
-      </Box>
+        <Link
+          my={1}
+          display="block"
+          fontSize="md"
+          lineHeight="normal"
+          fontWeight="semibold"
+          href="#"
+        >
+          
+        </Link>
+        <Text color="gray.500">
+        by Ashfaq
+        </Text>
+        <Button maxWidth="100px" my={2}>
+      
+        </Button>
+      </Stack>
     </Box>
   );
 }
 
 export default function CardGroup() {
   return (
-      <>
-    <Heading as="h3" size="xl"> Featured Roadmaps</Heading>
-    <Wrap px={2}>
-      <Cards />
-      <Cards />
-      <Cards />
-      <Cards />
-      <Cards />
-      <Cards />
-      <Cards />
-      <Cards />
-    </Wrap>
+    <>
+      <Container maxW="{20}" mt={[1,5,10,20]} >
+        <Heading color="white" size="lg" px="2">
+          Featured Roadmaps
+        </Heading>
+        <SimpleGrid columns={[1, 2, 4, 3]}>
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+          <Cards />
+        </SimpleGrid>
+      </Container>
     </>
   );
 }
