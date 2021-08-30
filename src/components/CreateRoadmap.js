@@ -29,7 +29,7 @@ function CreateRoadmap() {
   };
 
   return (
-    <Container>
+    <>
       <Stack spacing={3}>
         <Text>name: {value}</Text>
         <Input
@@ -51,10 +51,12 @@ function CreateRoadmap() {
       </Stack>
 
       {step.map((item) => (
-        <h1>{item.name}</h1>
+        <>
+        
+        </>
       ))}
       <button onClick={() => add()}>Add</button>
-    </Container>
+    </>
   );
 }
 

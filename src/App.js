@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import Body from "./components/Body";
 import CardGroup from "./components/CardGroup";
 import CreateRoadmap from "./components/CreateRoadmap";
+import RoadmapSteps from "./components/RoadmapSteps";
 
 function App() {
   return (
@@ -16,7 +17,11 @@ function App() {
       <Body />
       <CardGroup /> */}
 
+      {/* create Post route */}
         <CreateRoadmap />
+
+        {/*Verticle Timeline  */}
+        <RoadmapSteps/>
       </Stack>
     </Box>
 
