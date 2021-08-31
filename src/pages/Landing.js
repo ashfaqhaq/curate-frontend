@@ -9,7 +9,7 @@ import RoadmapSteps from "../components/RoadmapSteps";
 function Landing() {
   return (
     <div>
-      <Box w="100%" h="100%" bg="gray.800">
+      <Box w="100%" h="100%" >
         <Body />
         <CardGroup />
       </Box>
