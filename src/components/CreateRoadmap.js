@@ -15,8 +15,8 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-import VerticalCard  from "./VerticalCard";
-import * as _ from 'lodash';
+import VerticalCard from "./VerticalCard";
+import * as _ from "lodash";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -28,105 +28,46 @@ const initialValue = {
   desc: "",
   type: "",
   link: "",
-  hours:"",
+  hours: "",
   isFree: true,
 };
 
 function CreateRoadmap() {
-  const [step, setStep] = useState([initialValue]);
+  const [save, setSave] = useState([]);
   const [show, setShow] = useState(false);
   const [value, setValue] = React.useState("");
 
-  const handleChange = (event,index) => {
+  const handleChange = (event, index) => {};
 
-    const {value,name} = event.target;
-   
-    setStep(prevState=>{
-      const newForm = [...prevState];
-      console.log({newForm});
-      newForm[index] = { ...newForm[index], [name]: value };
-      console.log(newForm[index])
-      return { newForm };
-    })
-
-    console.log(step)
-    
-  //   let oldData = [...step] // important to create a copy, otherwise you'll modify state outside of setState call
-  //  oldData[index][`${name}`] = value;
-   
-  //   setStep(oldData);
- 
-    //  console.log(name) 
-   
-    // console.log(_.get(step[index],name))
-    
-    // setStep(prev=> [...prev, step[index]=change ])
-    console.log(step)
-    
-  };
-
-  const VerticalCards = ({ step }) => {
-    return step.map((item,index) => (
+  const VerticalCards = ({ save }) => {
+    return save.map((item, index) => (
       <>
-        <Box boxShadow="dark-lg" p="8" m="8" rounded="md">
-         
-            <HStack spacing={2} centered={true}>
-              <Text> Name: </Text>
-              <Input
-                name="name"
-              
-                value={item.name}
-                onChange={(e)=>handleChange(e,index)}
-                placeholder="eg: HTML Roadmap"
-                size="md"
-              />
-              <Text> Link: </Text>
-              <Input
-               name="link"
-             
-                value={item.link}
-                onChange={(e)=>handleChange(e,index)}
-                placeholder="https://youtube.com/c/TanayPratap"
-                size="md"
-              />
-            </HStack>
+        <Box boxShadow="dark-lg" p="8" m="8" rounded="md" color="white">
+          <HStack spacing={2} centered={true}>
+            <Text> Name: </Text>
+            {item.name}
+            <Text> Link: </Text>
+            {item.link}
+          </HStack>
 
-            <Text>Description: (optional)</Text>
-            <Input
-              name="desc"
-            
-              value={item.desc}
-              onChange={()=>handleChange(item,index)}
-              placeholder="Description"
-              size="md"
-            />
+          <Text>Description: (optional) {item.desc} </Text>
 
-            <Flex>
-              <InputGroup>
-                <NumberInput>
-                  Hours needed <NumberInputField m={2} value={item.hours}  name="hours"/>
-                </NumberInput>
-                <RadioGroup m={2}>
-                  <Stack spacing={4} direction="row">
-                    <Radio value={true} name="isFree">Free</Radio>
-                    <Radio value={false} name="isFree" >Paid</Radio>
-                  </Stack>
-                </RadioGroup>
-              </InputGroup>
-            </Flex>
-          
+          <Flex>
+            {item.hour} Type : {item.type}{" "}
+            {item.isFree === true ? "Free" : "Paid"}
+          </Flex>
         </Box>
       </>
     ));
   };
 
   const add = () => {
-    setStep((prevState) => [...prevState, initialValue]);
+    setSave((prevState) => [...prevState, initialValue]);
   };
 
   return (
     <div>
-      <Container maxW="container.md"  color="black">
+      <Container maxW="container.md" color="black">
         <Stack direction={["column", "row"]} spacing={4} p="4">
           <Text> Name: </Text>
           <Input
@@ -145,9 +86,10 @@ function CreateRoadmap() {
           />
         </Stack>
 
-        
-         {/* {step&& <VerticalCard step={step} /> } */}
-      
+        <VerticalCard save={save} setSave={setSave} />
+        <VerticalCards save={save} setSave={setSave} />
+        {console.log(save)}
+
         <Stack
           direction={["column-reverse", "row-reverse"]}
           spacing={4}
