@@ -13,10 +13,10 @@ import customTheme from "./theme.js";
 ReactDOM.render(
   <BrowserRouter>
   <Auth0Provider
-    domain="dev-5torqz8e.us.auth0.com"
-    clientId="128wykGVXmyeRPfFARUE7OUgLaqpTcwf"
+    domain= {process.env.AUTH0_DOMAIN}
+    clientId={process.env.AUTH0_CLIENTID}
     redirectUri={window.location.origin}
-    audience="https://roadmap-api.demo.com"
+    audience={process.env.AUTH0_AUDIENCE}
     scope="openid profile email"
   >
     <ChakraProvider theme={customTheme}>
