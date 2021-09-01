@@ -66,8 +66,8 @@ function InputModal({ setSave }) {
           <ModalBody pb={6}>
             <HStack spacing={2}>
               <FormControl isRequired>
-                <FormLabel>Name</FormLabel>
-                <Input ref={nameRef} placeholder="First name" />
+                <FormLabel>Title</FormLabel>
+                <Input ref={nameRef} placeholder="HTML Course..." />
               </FormControl>
 
               <FormControl mt={4} isRequired>
