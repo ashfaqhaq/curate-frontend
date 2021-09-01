@@ -27,7 +27,7 @@ function NavBar() {
           {isAuthenticated ? "Create Roadmap" : null}
         </Button>
 
-        <Button colorScheme="orange" mr="4" d={{ sm: "none", md: "inline" }}>
+        <Button colorScheme="orange" mr="4" d={{ xs:"none",sm: "none", md: "inline" }}>
           {isAuthenticated ? user?.nickname : "Join us"}
         </Button>
         {user ? (
