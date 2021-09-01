@@ -1,7 +1,6 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import Body from "../components/Body";
-import CardGroup from "../components/CardGroup";
 
 function Landing() {
   return (
