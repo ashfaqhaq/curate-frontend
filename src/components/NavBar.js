@@ -32,10 +32,10 @@ function NavBar() {
         <Button
           colorScheme="orange"
           mr="4"
-          d={{ xs: "none", sm: "none", md: "inline" }}
+         
           onClick={loginWithRedirect}
         >
-          {isAuthenticated ? user?.nickname : "Join us"}
+          {isAuthenticated ? null : "Join us"}
         </Button>
         {user ? (
           <Button mr="4" onClick={logout}>
