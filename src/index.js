@@ -13,14 +13,14 @@ import customTheme from "./theme.js";
 ReactDOM.render(
   <BrowserRouter>
   <Auth0Provider
-    domain= {process.env.AUTH0_DOMAIN}
-    clientId={process.env.AUTH0_CLIENTID}
+    domain= {process.env.REACT_APP_AUTH0_DOMAIN}
+    clientId={process.env.REACT_APP_AUTH0_CLIENTID}
     redirectUri={window.location.origin}
-    audience={process.env.AUTH0_AUDIENCE}
+    audience={process.env.REACT_APP_AUTH0_AUDIENCE}
     scope="openid profile email"
   >
     <ChakraProvider theme={customTheme}>
-    
+    {console.log(process.env.REACT_APP_AUTH0_DOMAIN)}
       <App />
      
     </ChakraProvider>
