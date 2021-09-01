@@ -1,38 +1,41 @@
 import {
-  HStack,
   Box,
-  Button,
   Heading,
   Text,
-  VStack,
   Flex,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { Image } from "@chakra-ui/react";
+import React, {  } from "react";
 import {
-  Fade,
-  ScaleFade,
-  Slide,
-  SlideFade,
   Container,
   Stack,
-  Spacer,
 } from "@chakra-ui/react";
-import { RoughNotation, RoughNotationGroup } from "react-rough-notation";
-import { useDisclosure } from "@chakra-ui/react";
-import * as _ from "lodash";
+import { RoughNotation } from "react-rough-notation";
 
-import img from "../assets/curate.svg";
+
+import { useAuth0 } from "@auth0/auth0-react";
+
 
 function Body() {
-  // show annotations
- 
+  const {
+    isAuthenticated,
+    loginWithRedirect,
+    user,
+  } = useAuth0();
 
+  console.log(user)
   return (
     <Flex color="white">
       <Container maxW="container.xl">
         <Stack direction={["column-reverse", "row"]} spacing={4}>
-          <Box mt={[5, 10, 20]} p={[1,10]}>
+          <Box mt={[5, 10, 20]} p={[1, 10]}>
+            <Heading
+            as="h1"
+              bgGradient="linear(to-l, #7928CA,#FF0080)"
+              bgClip="text"
+              fontSize="6xl"
+            >
+              Curate
+            </Heading>
             <Heading as="h2" size="2xl">
               <RoughNotation
                 type="strike-through"
@@ -46,7 +49,7 @@ function Body() {
               </RoughNotation>
             </Heading>
 
-            <Text fontSize="xl" py="2"  color="red.300">
+            <Text fontSize="xl" py="2" color="red.300">
               With the burst of content creation, something is missing and that
               is
               <RoughNotation
@@ -59,18 +62,18 @@ function Body() {
                 Curation!
               </RoughNotation>
               <br />
-              
             </Text>
             <Text color="gray">
-            Explore. Learn. Share!
-            <br/>
-              Sign up, curate a list of your favourite resources. Share! 
+              Explore. Learn. Share!
+              <br />
+              Sign up, curate a list of your favourite resources. Share!
             </Text>
             <Box
               as="button"
               mt="4"
               py={2}
               px={4}
+              onClick={loginWithRedirect}
               color="white"
               // fontWeight="bold"
               borderRadius="md"
@@ -79,7 +82,7 @@ function Body() {
                 bgGradient: "linear(to-r, yellow.500, red.500)",
               }}
             >
-              Join us
+             {isAuthenticated?  "LoggedIn": "Join us 🚀  "}
             </Box>
           </Box>
           <Box size="sm" mWidth="100px">

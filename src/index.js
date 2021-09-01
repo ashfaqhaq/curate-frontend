@@ -7,20 +7,25 @@ import {
   ChakraProvider,
 } from "@chakra-ui/react";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { BrowserRouter } from "react-router-dom";
 import customTheme from "./theme.js";
 
 ReactDOM.render(
+  <BrowserRouter>
   <Auth0Provider
     domain="dev-5torqz8e.us.auth0.com"
     clientId="128wykGVXmyeRPfFARUE7OUgLaqpTcwf"
     redirectUri={window.location.origin}
-    audience="this is an identifier"
+    audience="https://roadmap-api.demo.com"
     scope="openid profile email"
   >
     <ChakraProvider theme={customTheme}>
+    
       <App />
+     
     </ChakraProvider>
-  </Auth0Provider>,
+  </Auth0Provider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

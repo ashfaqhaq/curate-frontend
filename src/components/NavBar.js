@@ -1,38 +1,41 @@
-import {
-  Stack,
-  HStack,
-  VStack,
-  Heading,
-  Flex,
-  Box,
-  Spacer,
-  Button,
-} from "@chakra-ui/react";
-
+import { Heading, Flex, Box, Spacer, Button } from "@chakra-ui/react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useHistory, Link } from "react-router-dom";
 function NavBar() {
+  const history = useHistory();
+  const { isAuthenticated, user, logout } = useAuth0();
+
   return (
-    <Flex bg="red.200" >
-      <Box p="2" >
-        <Heading size="lg">Curate</Heading>
+    <Flex bg="gray.700">
+      <Box p="2">
+        <Link to="/">
+          <Heading size="lg" px="4">
+            Curate
+          </Heading>
+        </Link>
       </Box>
       <Spacer />
 
-      <Box p="2" mr="4">
-      <Button colorScheme="orange" mr="4" variant="unstyled">
-         Explore
-        </Button>
-    </Box>
-      <Box p="2" mr="4">
-      <Button colorScheme="orange" mr="4" variant="unstyled">
-          About us
-        </Button>
-      </Box>
       <Spacer />
 
       <Box p="2">
-        <Button colorScheme="orange" mr="4">
-          Join us
+        <Button
+          colorScheme="blue"
+          mr="4"
+          onClick={() => history.push("/create")}
+        >
+          {isAuthenticated ? "Create Roadmap" : null}
         </Button>
+
+        <Button colorScheme="orange" mr="4" d={{ sm: "none", md: "inline" }}>
+          {isAuthenticated ? user?.nickname : "Join us"}
+        </Button>
+        {user ? (
+          <Button mr="4" onClick={logout}>
+            {" "}
+            Log Out
+          </Button>
+        ) : null}
       </Box>
     </Flex>
   );

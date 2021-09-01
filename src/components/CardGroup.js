@@ -2,7 +2,6 @@ import React from "react";
 
 import {
   Box,
-  Wrap,
   Heading,
   Text,
   Link,
@@ -10,7 +9,6 @@ import {
   Stack,
   SimpleGrid,
   Container,
-  Icon,
 } from "@chakra-ui/react";
 function Cards() {
   return (
@@ -18,7 +16,7 @@ function Cards() {
       py={4}
       display={{ md: "flex" }}
       maxWidth="{4}"
-      bg="white"
+      bg="gray.700"
       borderWidth={1}
       margin={2}
       

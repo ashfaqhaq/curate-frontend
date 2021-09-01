@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { convertor } from "number-to-words";
+// import { convertor } from "number-to-words";
 import {
   Container,
   Modal,
@@ -17,21 +17,12 @@ import {
   Stack,
   HStack,
   Select,
-  RadioGroup,
-  Radio,
   Textarea,
+  VStack,
 } from "@chakra-ui/react";
+import { AddIcon } from '@chakra-ui/icons'
 
-const initialValue = {
-  name: "",
-  desc: "",
-  type: "",
-  link: "",
-  hours: "",
-  isFree: true,
-};
-
-function InputModal({setSave }) {
+function InputModal({ setSave }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [type, setType] = useState();
   const [isFree, setIsFree] = useState();
@@ -54,10 +45,12 @@ function InputModal({setSave }) {
   }
   return (
     <>
-      <Button onClick={onOpen} color="green" bg="gray.800"> Add Step </Button>
-      <Button ml={4} ref={nameRef}>
-        I'll receive focus on close
-      </Button>
+    <VStack direction="row-reverse">
+    <Button leftIcon={<AddIcon />} colorScheme="teal" variant="solid" d={'flex-end'} onClick={onOpen}>
+      Add Resource
+  </Button>
+     
+      </VStack>
 
       <Modal
         initialFocusRef={nameRef}
@@ -72,12 +65,12 @@ function InputModal({setSave }) {
           <ModalCloseButton />
           <ModalBody pb={6}>
             <HStack spacing={2}>
-              <FormControl>
+              <FormControl isRequired>
                 <FormLabel>Name</FormLabel>
                 <Input ref={nameRef} placeholder="First name" />
               </FormControl>
 
-              <FormControl mt={4}>
+              <FormControl mt={4} isRequired>
                 <FormLabel>Link:</FormLabel>
                 <Input ref={linkRef} placeholder="https://youtube.com/" />
               </FormControl>
@@ -93,21 +86,20 @@ function InputModal({setSave }) {
                 <Input ref={hourRef} placeholder="6" />
               </FormControl>
 
-              <FormControl mt={4}>
-                <RadioGroup onChange={setIsFree}>
-                  <Stack direction="row">
-                    <Radio colorScheme="red" size="lg" value={true}>
-                      Free
-                    </Radio>
-                    <Radio colorScheme="red" size="lg" value={false}>
-                      Paid
-                    </Radio>
-                  </Stack>
-                </RadioGroup>
-              </FormControl>
-              <FormControl mt={4}>
+              <FormControl mt={4} isRequired>
+              <HStack spacing={2}>
+             
+              <Select
+                 defaultValue={true}
+                  onChange={(e) => setIsFree(e.target.value)}
+                >
+                  <option value={true}>Free</option>
+                  <option value={false}>Paid</option>
+                 
+                </Select>
+             
                 <Select
-                  placeholder="Type"
+                  placeholder="Content Type"
                   onChange={(e) => setType(e.target.value)}
                 >
                   <option value="Playlist/Video">Playlist/Video</option>
@@ -115,12 +107,22 @@ function InputModal({setSave }) {
                     Documentation/Article
                   </option>
                 </Select>
+                </HStack>
               </FormControl>
             </Stack>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleSave}>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={() => {
+                handleSave();
+                onClose();
+              }}
+
+             
+            >
               Save
             </Button>
             <Button onClick={onClose}>Cancel</Button>
@@ -131,18 +133,14 @@ function InputModal({setSave }) {
   );
 }
 
-function VerticalCard({ setSave }) {
- 
+function ModalCards({ setSave }) {
   return (
     <div>
       <Container maxWidth="container.xl">
-        <InputModal
-          setSave={setSave}
-         
-        />
+        <InputModal setSave={setSave} />
       </Container>
     </div>
   );
 }
 
-export default VerticalCard;
+export default ModalCards;
