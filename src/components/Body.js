@@ -1,35 +1,21 @@
-import {
-  Box,
-  Heading,
-  Text,
-  Flex,
-} from "@chakra-ui/react";
-import React, {  } from "react";
-import {
-  Container,
-  Stack,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, Flex } from "@chakra-ui/react";
+import React from "react";
+import { Container, Stack,Spacer } from "@chakra-ui/react";
 import { RoughNotation } from "react-rough-notation";
-
-
+import {useHistory} from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
 function Body() {
-  const {
-    isAuthenticated,
-    loginWithRedirect,
-    user,
-  } = useAuth0();
-
-  console.log(user)
+  const { isAuthenticated, loginWithRedirect, user } = useAuth0();
+  const history = useHistory();
+  console.log(user);
   return (
     <Flex color="white">
       <Container maxW="container.xl">
         <Stack direction={["column-reverse", "row"]} spacing={4}>
           <Box mt={[5, 10, 20]} p={[1, 10]}>
             <Heading
-            as="h1"
+              as="h1"
               bgGradient="linear(to-l, #7928CA,#FF0080)"
               bgClip="text"
               fontSize="6xl"
@@ -82,7 +68,24 @@ function Body() {
                 bgGradient: "linear(to-r, yellow.500, red.500)",
               }}
             >
-             {isAuthenticated?  "LoggedIn": "Join us 🚀  "}
+              {isAuthenticated ? "LoggedIn" : "Join us 🚀  "}
+            </Box>
+            <Spacer />
+            <Box
+              as="button"
+              mt="4"
+              py={2}
+              px={4}
+              onClick={()=>history.push('/explore')}
+              color="white"
+              // fontWeight="bold"
+              borderRadius="md"
+              bgGradient="linear(to-r, blue.500,yellow.500)"
+              _hover={{
+                bgGradient: "linear(to-r, yellow.500, red.500)",
+              }}
+            >
+              {"Explore 🌎  "}
             </Box>
           </Box>
           <Box size="sm" mWidth="100px">

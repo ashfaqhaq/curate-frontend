@@ -4,7 +4,6 @@ import {
   Input,
   Stack,
   Text,
-  HStack,
   Container,
   Flex,
   Box,
@@ -12,9 +11,10 @@ import {
   Textarea,
   FormLabel,
   VStack,
+  Tag
 } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import ModalCards from "./ModalCards";
 import "react-vertical-timeline-component/style.min.css";
 import axios from "axios";
@@ -22,6 +22,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function CreateRoadmap() {
   const { user, getAccessTokenSilently } = useAuth0();
+  
   const history = useHistory();
   async function postRoadmap() {
     const token = await getAccessTokenSilently();
@@ -39,8 +40,16 @@ function CreateRoadmap() {
     };
 
     axios
-      .post("https://nest-js-curate.herokuapp.com/roadmap", data, { headers: headers })
-      .then((data) => alert(data.status))
+      .post("https://nest-js-curate.herokuapp.com/roadmap", data, {
+        headers: headers,
+      })
+      .then((data) => {
+        if(data.status===200|201){
+          alert("Successfully created")
+          history.push('/explore')
+        }
+      
+      })
       .then(() => history.push("/explore"))
       .catch((err) => console.log(err));
   }
@@ -50,20 +59,21 @@ function CreateRoadmap() {
   const [desc, setDesc] = React.useState("");
 
   const VerticalCards = ({ save }) => {
+    console.log(save);
     return save.map((item, index) => (
       <>
         <Box boxShadow="dark-lg" p="8" m="8" rounded="md" color="white">
-          <HStack spacing={2} centered={true}>
+          <VStack spacing={2} centered={true}>
             <Text> Name: {item.name} </Text>
 
-            <Text> Link: {item.link} </Text>
-          </HStack>
+           <a href= {item.link} >  <Text> Link: {item.link} </Text> </a>
 
-          <Text>Description: (optional) {item.desc} </Text>
-
+            <Text>Description: {item.desc} </Text>
+          </VStack>
           <Flex>
-            {item.hour} Type : {item.type}{" "}
-            {item.isFree === true ? "Free" : "Paid"}
+           
+          <Tag>{item.isFree === "true" ? "Free" : "Paid"}</Tag>
+            
           </Flex>
         </Box>
       </>

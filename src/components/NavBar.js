@@ -19,15 +19,21 @@ function NavBar() {
       <Spacer />
 
       <Box p="2">
-        <Button
-          colorScheme="blue"
-          mr="4"
-          onClick={() => history.push("/create")}
-        >
-          {isAuthenticated ? "Create Roadmap" : null}
-        </Button>
+        {isAuthenticated && (
+          <Button
+            colorScheme="blue"
+            mr="4"
+            onClick={() => history.push("/create")}
+          >
+            Create Roadmap
+          </Button>
+        )}
 
-        <Button colorScheme="orange" mr="4" d={{ xs:"none",sm: "none", md: "inline" }}>
+        <Button
+          colorScheme="orange"
+          mr="4"
+          d={{ xs: "none", sm: "none", md: "inline" }}
+        >
           {isAuthenticated ? user?.nickname : "Join us"}
         </Button>
         {user ? (
