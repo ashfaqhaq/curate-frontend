@@ -26,7 +26,7 @@ function CreateRoadmap() {
   const history = useHistory();
   async function postRoadmap() {
     const token = await getAccessTokenSilently();
-    console.log(token);
+  
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

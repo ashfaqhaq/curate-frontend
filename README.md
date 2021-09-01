@@ -1,70 +1,171 @@
-# Getting Started with Create React App
+<h1 align="center">Curate Roadmaps 🚀</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+<a href="https://github.com/ashfaqhaq/curate-frontend"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"></a>
+<a href="https://github.com/ashfaqhaq/curate-frontend"><img src="https://img.shields.io/badge/Built%20by-developers%20%3C%2F%3E-0059b3"></a>
+<a href="https://github.com/ashfaqhaq"><img src="https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?v=103"></a>
+<a href="https://github.com/ashfaqhaq/curate-frontend/graphs/contributors"><img src="https://img.shields.io/github/contributors/ashfaqhaq/curate-frontend?color=brightgreen"></a>
+<a href="https://github.com/ashfaqhaq/curate-frontend/blob/main/LICENSE" target="blank">
+<img src="https://img.shields.io/github/license/ashfaqhaq/curate-frontend?style=flat-square" alt="Curate-Frontend licence" />
+</a>
+<a href="https://github.com/ashfaqhaq/curate-frontend" target="blank">
+<img src="https://img.shields.io/github/forks/ashfaqhaq/curate-frontend?style=flat-square" alt="styler forks"/>
+</a>
+<a href="https://github.com/ashfaqhaq/curate-frontend/stargazers" target="blank">
+<img src="https://img.shields.io/github/stars/ashfaqhaq/curate-frontend?style=flat-square" alt="styler stars"/>
+</a>
+<a href="https://github.com/ashfaqhaq/curate-frontend/issues" target="blank">
+<img src="https://img.shields.io/github/issues/ashfaqhaq/curate-frontend?style=flat-square" alt="styler issues"/>
+</a>
+<a href="https://github.com/ashfaqhaq/curate-frontend" target="blank">
+<img src="https://img.shields.io/github/issues-pr/ashfaqhaq/curate-frontend?style=flat-square" alt="styler pull-requests"/>
+</a>
 
-## Available Scripts
+</p>
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+    <a href="https://curate-roadmaps.netlify.app" target="blank">View Demo</a>
+    ·
+    <a href="https://github.com/ashfaqhaq/curate-frontend/issues/new/choose">Report Bug</a>
+    ·
+    <a href="https://github.com/ashfaqhaq/curate-frontend/issues/new/choose">Request Feature</a>
+</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Introducing Curate Roadmaps 🚀
 
-### `npm test`
+<a href="https://curate-roadmaps.netlify.app/" target="blank">
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1630493773975/hqqREwJjI.png?auto=compress,format&format=webp" />
+</a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Curate Roadmaps](https://curate-roadmaps.netlify.app)
 
-### `npm run build`
+[Read blog 📖](https://ashfaq.hashnode.dev/launching-curate-roadmaps-an-open-source-initiative-to-curate-useful-resources)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+https://curate-roadmaps.netlify.app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Backend API documentation: https://nest-js-curate.herokuapp.com/api/
 
-### `npm run eject`
+## 😎 Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- ✨ **User Authentication**
+- ⭐ **Curate roadmaps for everyone**
+- 🌈 **Share your favorite resources list**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## 🛠️ Installation Steps
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork this repository
+2. Clone your forked copy of the project.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone --depth 1 https://github.com/<your username>/curate-frontend.git
+```
 
-### Code Splitting
+To test if it is working properly change the following variables in  `index.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Important configuration 
+```
+ <Auth0Provider
+    domain= <AUTH0_dev>
+    clientId= <AUTH0_clientId>
+    redirectUri={window.location.origin} // dont change
+    audience= <AUTH0_audience>
+    scope="openid profile email"
+  >
+```
 
-### Analyzing the Bundle Size
+After doing these, go to Auth0 dashboard to change the callback, logout and web origins to localhost:3000 (which is currently where you will be signing in)!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+3. Change the working directory
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+cd curate-frontend
+```
 
-### Advanced Configuration
+4. Add a reference to the original repository.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+git remote add upstream https://github.com/ashfaqhaq/curate-frontend.git
+```
 
-### Deployment
+5. Check the remotes for this repository.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+git remote -v
+```
 
-### `npm run build` fails to minify
+6. Always take a pull from the upstream repository to your main branch to keep it at par with the main project(updated repository).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+git pull upstream main
+```
+
+7. Create a new branch.
+
+```
+git checkout -b <your_branch_name>
+```
+
+**You are all set! Open [localhost:3000](http://localhost:3000/) to see the app.** (Authenticated via Auth0)
+
+
+
+8. Track your changes
+
+```
+git add .
+```
+
+9. Commit your changes .
+
+```
+git commit -m "Relevant message"
+```
+
+10. Push the committed changes in your feature branch to your remote repo.
+
+```
+git push -u origin <your_branch_name>
+
+```
+
+11. To create a pull request, click on compare and pull requests. Please ensure you compare your feature branch to the desired branch of the repo you are suppose to make a PR to.
+
+
+## 💻 Built with
+
+- **Auth0:** User Authentication
+- **Frontend** : React
+- **Backend** : Nestjs
+- **Chakra UI-React:** Rich Styling
+- **Rough Notation:** A javaScript library to animate annotations on a web page
+- **Heroku:** For Server 
+- **Netlify:** For Frontend
+
+
+## 🚀 Future Plans
+
+- Individual Profile pages detailing the complete history and resources.
+- Sorting out Rodmaps according to beginners, intermediate and advanced levels.
+- Enable collaboration medium by creating communitiy and creating forums.
+- Toggle Custom themes.
+
+## 🛴 Deploy
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c15bf6-33d6-4291-89da-73674aaf99e7/deploy-status)](https://app.netlify.com/sites/curate-roadmaps/deploys)
+
+
+---
+
+## ✌ Connect with me on Twitter
+
+<a href="https://twitter.com/ashfaq_ulhaq" target="blank">
+<img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" />
+</a>

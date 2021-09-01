@@ -2,18 +2,12 @@ import "./App.css";
 import React, { Suspense } from "react";
 
 import NavBar from "./components/NavBar";
-import {Spinner} from '@chakra-ui/react';
+import {Loading} from "./util/Loading";
 
 const Routes = React.lazy(() => import("./Routes"));
 function App() {
   return (
-    <Suspense fallback={<Spinner
-      thickness="4px"
-      speed="0.65s"
-      emptyColor="gray.200"
-      color="gray.600"
-      size="xl"
-    />}>
+    <Suspense fallback={<Loading/>}>
       <NavBar />
       <Routes />
     </Suspense>

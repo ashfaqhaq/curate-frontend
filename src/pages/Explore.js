@@ -12,16 +12,23 @@ import {
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { ArrowRightIcon } from "@chakra-ui/icons";
+import {Loading} from "../util/Loading";
 
 function Explore() {
   const history = useHistory();
 
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get("https://nest-js-curate.herokuapp.com/roadmap/")
-      .then((data) => setData(data.data))
+      .then((data) =>{ 
+        
+        setData(data.data);
+        setIsLoading(false);
+      }
+        )
       .catch((err) => console.log(err));
   }, []);
 
@@ -79,6 +86,7 @@ function Explore() {
             Roadmaps
           </Text>
         </Center>
+        {isLoading? <Loading/> :null }
         <Preview data={data} />
       </Container>
     </div>
