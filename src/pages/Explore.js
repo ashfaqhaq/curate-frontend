@@ -110,9 +110,9 @@ function Explore() {
                   }}
                   alignSelf="right"
                   size="sm"
-                  ml="4"
+                  my="2"
                 >
-                  Delete Post
+                  Delete
                 </Button>
               ) : null}
             </Center>
