@@ -3,28 +3,24 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import {
-  ChakraProvider,
-} from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter } from "react-router-dom";
 import customTheme from "./theme.js";
 
 ReactDOM.render(
   <BrowserRouter>
-  <Auth0Provider
-    domain= {process.env.REACT_APP_AUTH0_DOMAIN}
-    clientId={process.env.REACT_APP_AUTH0_CLIENTID}
-    redirectUri={window.location.origin}
-    audience={process.env.REACT_APP_AUTH0_AUDIENCE}
-    scope="openid profile email"
-  >
-    <ChakraProvider theme={customTheme}>
-    {console.log(process.env.REACT_APP_AUTH0_DOMAIN)}
-      <App />
-     
-    </ChakraProvider>
-  </Auth0Provider>
+    <Auth0Provider
+      domain={process.env.REACT_APP_AUTH0_DOMAIN}
+      clientId={process.env.REACT_APP_AUTH0_CLIENTID}
+      redirectUri={window.location.origin}
+      audience={process.env.REACT_APP_AUTH0_AUDIENCE}
+      scope="openid profile email"
+    >
+      <ChakraProvider theme={customTheme}>
+        <App />
+      </ChakraProvider>
+    </Auth0Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );

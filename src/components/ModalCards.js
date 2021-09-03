@@ -20,7 +20,7 @@ import {
   Textarea,
   VStack,
 } from "@chakra-ui/react";
-import { AddIcon } from '@chakra-ui/icons'
+import { AddIcon } from "@chakra-ui/icons";
 
 function InputModal({ setSave }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,11 +45,16 @@ function InputModal({ setSave }) {
   }
   return (
     <>
-    <VStack direction="row-reverse">
-    <Button leftIcon={<AddIcon />} colorScheme="teal" variant="solid" d={'flex-end'} onClick={onOpen}>
-      Add Resource
-  </Button>
-     
+      <VStack direction="row-reverse">
+        <Button
+          leftIcon={<AddIcon />}
+          colorScheme="teal"
+          variant="solid"
+          d={"flex-end"}
+          onClick={onOpen}
+        >
+          Add Resource
+        </Button>
       </VStack>
 
       <Modal
@@ -87,26 +92,24 @@ function InputModal({ setSave }) {
               </FormControl>
 
               <FormControl mt={4} isRequired>
-              <HStack spacing={2}>
-             
-              <Select
-                 defaultValue={true}
-                  onChange={(e) => setIsFree(e.target.value)}
-                >
-                  <option value={true}>Free</option>
-                  <option value={false}>Paid</option>
-                 
-                </Select>
-             
-                <Select
-                  placeholder="Content Type"
-                  onChange={(e) => setType(e.target.value)}
-                >
-                  <option value="Playlist/Video">Playlist/Video</option>
-                  <option value="Documentation/Article">
-                    Documentation/Article
-                  </option>
-                </Select>
+                <HStack spacing={2}>
+                  <Select
+                    defaultValue={true}
+                    onChange={(e) => setIsFree(e.target.value)}
+                  >
+                    <option value={true}>Free</option>
+                    <option value={false}>Paid</option>
+                  </Select>
+
+                  <Select
+                    placeholder="Content Type"
+                    onChange={(e) => setType(e.target.value)}
+                  >
+                    <option value="Playlist/Video">Playlist/Video</option>
+                    <option value="Documentation/Article">
+                      Documentation/Article
+                    </option>
+                  </Select>
                 </HStack>
               </FormControl>
             </Stack>
@@ -120,8 +123,6 @@ function InputModal({ setSave }) {
                 handleSave();
                 onClose();
               }}
-
-             
             >
               Save
             </Button>
