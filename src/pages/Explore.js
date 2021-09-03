@@ -17,7 +17,6 @@ import {
   AlertDialogFooter,
 } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
-import { ArrowRightIcon } from "@chakra-ui/icons";
 import { Loading } from "../util/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -28,7 +27,7 @@ function Explore() {
   const [isLoading, setIsLoading] = useState(true);
 
   const [deletePostId, setDeletePostId] = useState();
-  
+
   // eslint-disable-next-line no-unused-vars
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -101,7 +100,6 @@ function Explore() {
                 <Button onClick={() => history.push(`/roadmap/${item._id}`)}>
                   View
                 </Button>
-                <ArrowRightIcon alignSelf="right" />
               </HStack>
               {user && user.nickname === item.createdBy ? (
                 <Button
@@ -110,6 +108,9 @@ function Explore() {
                     setDeletePostId(item._id);
                     setIsOpen(true);
                   }}
+                  alignSelf="right"
+                  size="sm"
+                  ml="4"
                 >
                   Delete Post
                 </Button>
